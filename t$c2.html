@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abraji - Terms and Conditions2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+            background-color: skyblue;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .con{
+            background-color: aquamarine;
+           margin-top: 20px;
+           padding:  30px;
+           border-radius: 20px;
+           height: 800px;
+           width: 450px;
+           margin-left: 400px;
+        }
+    
+        button{
+          height: 50px;
+          width: 200px;
+          border: none;
+          box-shadow: 50px 20px 30px solid black;
+          margin-left: 4%;
+          border-radius: 30px;
+        }
+        button:hover{
+          background-color:silver;
+          color: black;
+        }
+    </style>
+</head>
+<body>
+<div class="con">
+    <hr>
+    <h1>Terms and Conditions</h1>
+    <hr>
+    <p><i><b>Welcome to Abdullahi tijjani buraji! Before proceeding with your purchase, we hope you read and agree to the terms and conditions.</b></i></p>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="button-container">
+        <label>
+            <input type="checkbox" id="agreeCheckbox"> I agree to the terms and conditions
+            <br>
+            <br>
+        </label>
+        <br>
+        <button id="proceedButton">Proceed</button>
+        <p class="error" id="errorMessage" style="display: none;">You must agree to the terms and conditions to proceed!</p>
+    </div>
+</div>
+    <script>
+        document.getElementById('proceedButton').addEventListener('click', function () {
+            const agreeCheckbox = document.getElementById('agreeCheckbox');
+            const errorMessage = document.getElementById('errorMessage');
+
+            if (agreeCheckbox.checked) {
+                // Redirect to checkout or next page
+                alert("Thanks you for agreeing! provide the underlisted  information pls ...");
+                window.location.href = "pinfo.html"; // Replace with your checkout page URL
+            } else {
+                // Show error message
+                errorMessage.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>

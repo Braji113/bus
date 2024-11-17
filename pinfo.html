@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: skyblue;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background: aquamarine;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 70%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 1em;
+        }
+        button {
+            width: 60%;
+            padding: 10px;
+            font-size: 1em;
+            color: #fff;
+            background: silver;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-left: 80px;
+        }
+        button:hover {
+            background: red;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+        .con{
+            background-color: aquamarine;
+            height: 350%;
+            width: 600px;
+            margin-left: 30%;
+            border-radius: 30px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="con">
+   <br>
+   <hr>
+    <h1>Customer Information Form</h1>
+    <hr>
+     <form id="customerForm">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name">
+        <span class="error" id="nameError"></span>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+        <span class="error" id="phoneError"></span>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+        <span class="error" id="emailError"></span>
+
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="3" placeholder="Enter your address"></textarea>
+        <span class="error" id="addressError"></span>
+
+        <label for="lga">Local Government Area (LGA)</label>
+        <input type="text" id="lga" name="lga" placeholder="Enter your LGA">
+        <span class="error" id="lgaError"></span>
+
+        <label for="state">State</label>
+        <input type="text" id="state" name="state" placeholder="Enter your state">
+        <span class="error" id="stateError"></span>
+
+        <label for="country">Country</label>
+        <select id="country" name="country">
+            <option value="">Select your country</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Ghana">Ghana</option>
+            <option value="South Africa">South Africa</option>
+            <option value="USA">Benin</option>
+            <option value="UK">Niger</option>
+        </select>
+        <span class="error" id="countryError"></span>
+        <br>
+        <br><br>
+        <a href="bussiness.html">
+        <button type="submit">Submit</button>
+    </a>
+    </form>
+    <br><br><br>
+</div>
+    <script>
+        document.getElementById('customerForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent form submission
+            let valid = true;
+
+            // Full Name Validation
+            const fullname = document.getElementById('fullname');
+            const nameError = document.getElementById('nameError');
+            if (fullname.value.trim() === '') {
+                valid = false;
+                nameError.textContent = 'Full name is required.';
+            } else {
+                nameError.textContent = '';
+            }
+
+            // Phone Number Validation
+            const phone = document.getElementById('phone');
+            const phoneError = document.getElementById('phoneError');
+            const phonePattern = /^[0-9]{10,15}$/; // 10-15 digits
+            if (!phonePattern.test(phone.value.trim())) {
+                valid = false;
+                phoneError.textContent = 'Phone number must be 10 to 15 digits.';
+            } else {
+                phoneError.textContent = '';
+            }
+
+            // Email Validation
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email.value.trim())) {
+                valid = false;
+                emailError.textContent = 'Enter a valid email address.';
+            } else {
+                emailError.textContent = '';
+            }
+
+            // Address Validation
+            const address = document.getElementById('address');
+            const addressError = document.getElementById('addressError');
+            if (address.value.trim() === '') {
+                valid = false;
+                addressError.textContent = 'Address is required.';
+            } else {
+                addressError.textContent = '';
+            }
+
+            // LGA Validation
+            const lga = document.getElementById('lga');
+            const lgaError = document.getElementById('lgaError');
+            if (lga.value.trim() === '') {
+                valid = false;
+                lgaError.textContent = 'LGA is required.';
+            } else {
+                lgaError.textContent = '';
+            }
+
+            // State Validation
+            const state = document.getElementById('state');
+            const stateError = document.getElementById('stateError');
+            if (state.value.trim() === '') {
+                valid = false;
+                stateError.textContent = 'State is required.';
+            } else {
+                stateError.textContent = '';
+            }
+
+            // Country Validation
+            const country = document.getElementById('country');
+            const countryError = document.getElementById('countryError');
+            if (country.value === '') {
+                valid = false;
+                countryError.textContent = 'Country is required.';
+            } else {
+                countryError.textContent = '';
+            }
+
+            // If valid, allow submission
+            if (valid) {
+                alert('Data submitted successfully!');
+                // Uncomment the following line to allow form submission to the server
+                // this.submit();
+                window.location.href="bussiness.html";
+            }
+        });
+    </script>
+</body>
+</html>
